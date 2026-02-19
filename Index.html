@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reign - Socials</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: #111;
+    color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  /* Lighting effect */
+  body::after {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle at top right, rgba(255,255,255,0.12), transparent);
+    top: 0;
+    right: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* Loading animation */
+  #loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 0.2rem;
+    font-size: 3rem;
+  }
+
+  .char {
+    display: inline-block;
+    animation: float 1s ease-in-out infinite alternate;
+    opacity: 0;
+    transform: translateY(20px);
+    animation-fill-mode: forwards;
+  }
+
+  .char:nth-child(1){ animation-delay: 0.1s; }
+  .char:nth-child(2){ animation-delay: 0.2s; }
+  .char:nth-child(3){ animation-delay: 0.3s; }
+
+  @keyframes float {
+    0% { transform: translateY(0px); opacity: 0; }
+    50% { transform: translateY(-10px); opacity: 1; }
+    100% { transform: translateY(0px); opacity: 1; }
+  }
+
+  /* Main content */
+  #main {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    animation: fadein 1s ease forwards;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+  }
+
+  @keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .socials {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 90vw;
+    max-width: 300px;
+    align-items: center;
+  }
+
+  .social-item {
+    background: rgba(50,50,50,0.75);
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.4);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1.2rem;
+    color: #ccc;
+  }
+
+  .social-item:hover {
+    transform: translateY(-3px);
+  }
+
+  .social-item:active {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+  }
+
+  @media(max-width:600px){
+    .social-item {
+      font-size: 1rem;
+      padding: 0.8rem 0;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- Loading Animation -->
+<div id="loading">
+  <span class="char">レ</span>
+  <span class="char">イ</span>
+  <span class="char">ン</span>
+</div>
+
+<!-- Main Content -->
+<div id="main">
+  <h1>My Socials</h1>
+  <div class="socials">
+    <div class="social-item" onclick="window.location.href='https://www.tiktok.com/@rgn_hvsn'">TikTok</div>
+    <div class="social-item" onclick="window.location.href='https://www.instagram.com/hxii_vssnn/?igsh=MXQ1Znl2NjF3eGhybg%3D%3D&utm_source=qr'">Instagram</div>
+    <div class="social-item" onclick="window.location.href='https://www.facebook.com/share/1bHnuPmgXj/?mibextid=wwXIfr'">Facebook</div>
+    <div class="social-item" onclick="window.location.href='tel:09565540916'">Messages</div>
+  </div>
+</div>
+
+<script>
+  // Show main content after loading animation
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('main').style.display = 'flex';
+    }, 2500);
+  });
+</script>
+</body>
+</html>
